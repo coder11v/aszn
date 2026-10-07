@@ -2,9 +2,10 @@ class Aszn < Formula
   desc "Alias Zone: per-directory zsh aliases that load on cd and unload on exit"
   homepage "https://github.com/coder11v/aszn"
   url "https://github.com/coder11v/aszn/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "REPLACE_ME_RUN_scripts/release.zsh"
+  sha256 "b59d1c50cbc15ddffa87a8309e120eadd04cdb8595e1e57e0192a6d7d0b7f404"
   license "MIT"
   head "https://github.com/coder11v/aszn.git", branch: "main"
+  version "0.1.0"
 
   uses_from_macos "zsh"
 
