@@ -1,0 +1,2 @@
+scope: exact
+alias dev="echo hi"

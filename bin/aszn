@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+# aszn CLI entry point.
+#
+# Homebrew puts this on PATH so `aszn install` works before the plugin is
+# loaded. Once ~/.zshrc sources aszn.zsh, the `aszn` shell function shadows
+# this script and handles everything in-process.
+
+emulate zsh
+
+# ${0:a} keeps symlinks (e.g. /opt/homebrew/bin/aszn) so the path we write to
+# .zshrc survives `brew upgrade`. ${0:A} is the resolved fallback.
+typeset plugin='' candidate
+for candidate in \
+  ${0:a:h:h}/share/aszn/aszn.zsh \
+  ${0:a:h:h}/aszn.zsh \
+  ${0:A:h:h}/share/aszn/aszn.zsh \
+  ${0:A:h:h}/aszn.zsh
+do
+  [[ -r $candidate ]] && { plugin=$candidate; break }
+done
+
+if [[ -z $plugin ]]; then
+  print -ru2 -- "aszn: cannot locate aszn.zsh next to ${0:a}"
+  exit 1
+fi
+
+typeset -gi _ASZN_CLI=1
+source $plugin
+aszn "$@"
