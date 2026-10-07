@@ -1,3 +1,5 @@
 [submodule "homebrew"]
 	path = homebrew
 	url = https://github.com/coder11v/homebrew-tools.git
+	branch = main
+	
